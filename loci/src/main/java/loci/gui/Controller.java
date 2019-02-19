@@ -8,6 +8,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import loci.exception.CustomException;
+import loci.parser.DatabaseCreator;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -64,8 +66,17 @@ public class Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
        this.answerTextArea.setVisible(true);
        //this.gridForButtons.setVisible(false);
+        // this.answerTextArea.setManaged(false); // искл. из родит. вычислений
         questionImage.setImage(im);
-        //this.answerTextArea.setManaged(false); // искл. из родит. вычислений
+
+        try {
+            DatabaseCreator creator = new DatabaseCreator();
+            creator.createDatabase();
+
+        } catch (CustomException e) {
+            e.printStackTrace();
+        }
+
     }
 
 
