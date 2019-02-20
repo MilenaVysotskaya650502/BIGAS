@@ -2,6 +2,7 @@ package loci.database;
 
 import loci.entity.Card;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +33,10 @@ public final class Database {
         }
     }
 
+    public List<String> getCategoriesList() {
+        return new ArrayList<>(dataMap.keySet());
+    }
+
     public List<Card> getCardsByCategory(String category) {
         return this.dataMap.get(category);
     }
@@ -44,11 +49,4 @@ public final class Database {
         return this.dataMap.size();
     }
 
-    /**
-     * This method return list of objects BusStop.
-     * @return list of objects stops.
-     */
-    public Map<String, List<Card>> getEntities() {
-        return this.dataMap;
-    }
 }
